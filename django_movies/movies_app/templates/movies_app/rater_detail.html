@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ object.id }}</h3>
+                </div>
+                <div class="panel-body">
+                    <h1>{{ object.age }}</h1>
+                    <h1>{{ object.gender }}</h1>
+                    <h1>{{ object.occupation }}</h1>
+                    <h1>{{ object.zip_code }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

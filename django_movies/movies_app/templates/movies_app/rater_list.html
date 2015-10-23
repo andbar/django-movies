@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br/>
+<div class="row">
+    {% for rater in rater_list %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="{% url 'rater_details' rater.id %}">{{ rater.id }}</a></h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
