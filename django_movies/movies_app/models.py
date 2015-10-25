@@ -23,6 +23,14 @@ class Movie(models.Model):
 
     avg_rating = property(_get_avg_rating)
 
+    def _get_raters(self):
+        raters = []
+        for rating in self.rating_set.all():
+            raters.append(rating.rater.id)
+        return raters
+
+    raters = property(_get_raters)
+
     def __str__(self):
         return self.title
 

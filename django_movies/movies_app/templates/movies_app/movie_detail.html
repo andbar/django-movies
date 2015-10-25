@@ -9,8 +9,10 @@
                     <h3 class="panel-title">{{ object.title }}</h3>
                 </div>
                 <div class="panel-body">
-                    <h1>{{ object.title }}</h1>
-                    <h1>Average Rating: {{ object.avg_rating|floatformat:2 }}</h1>
+                    <h2>Average Rating: {{ object.avg_rating|floatformat:2 }}</h2>
+                    {% for rater in object.raters %}
+                        <h2> Rater Number: {{ rater }}</h2>
+                    {% endfor %}
                 </div>
             </div>
         </div>
