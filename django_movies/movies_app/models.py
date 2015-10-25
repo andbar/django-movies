@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from django.db.models import Avg
 
 
 class Rater(models.Model):
@@ -16,6 +17,12 @@ class Rater(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=100)
 
+    def _get_avg_rating(self):
+        avg_rating = self.rating_set.aggregate(Avg('rating_num'))
+        return avg_rating["rating_num__avg"]
+
+    avg_rating = property(_get_avg_rating)
+
     def __str__(self):
         return self.title
 
@@ -26,4 +33,4 @@ class Rating(models.Model):
     rating_num = models.IntegerField()
 
     def __str__(self):
-        return self.movie.title + " " + str(self.rating_num)
+        return self.movie.title + ": " + str(self.rating_num)

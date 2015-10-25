@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 
 # Create your views here.
 from django.views.generic import ListView, DetailView
-from movies_app.models import Movie, Rater
+from movies_app.models import Movie, Rater, Rating
 
 
 def index_view(request):
