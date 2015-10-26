@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Top 20 Movies By Average Rating</h2>
+<div class="row">
+    {% for movie in movies %}
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}
+                    </a>- Rating: {{ movie.avg_rating|floatformat:2 }}</h3>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

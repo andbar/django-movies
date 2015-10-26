@@ -25,6 +25,9 @@ class Rater(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.title
+
     def _get_avg_rating(self):
         avg_rating = self.rating_set.aggregate(Avg('rating_num'))
         return avg_rating["rating_num__avg"]
@@ -38,9 +41,6 @@ class Movie(models.Model):
         return raters
 
     raters = property(_get_raters)
-
-    def __str__(self):
-        return self.title
 
 
 class Rating(models.Model):
