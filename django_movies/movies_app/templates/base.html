@@ -7,20 +7,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-<br/>
-<div class="container">
-    <div>
-        COMING SOON
-    </div>
-
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="{% url "index" %}">Home</a></li>
+        <li role="presentation"><a href="{% url "movies_list" %}">Movies</a></li>
+        <li role="presentation"><a href="{% url "raters_list" %}">Raters</a></li>
+    </ul>
     <br/>
-
+    <div class="container">
+        <div>
+            <h1>MOVIE REVIEW DATABASE</h1>
+        </div>
+        <br/>
     {% block content %}
     {% endblock %}
-
-    {% block joel %}
-    {% endblock %}
-
-</div>
+    </div>
 </body>
 </html>

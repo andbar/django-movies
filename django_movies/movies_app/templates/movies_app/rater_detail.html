@@ -6,13 +6,19 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ object.id }}</h3>
+                    <h1 class="panel-title">Rater ID: {{ object.id }}</h1>
                 </div>
                 <div class="panel-body">
-                    <h1>{{ object.age }}</h1>
-                    <h1>{{ object.gender }}</h1>
-                    <h1>{{ object.occupation }}</h1>
-                    <h1>{{ object.zip_code }}</h1>
+                    <h3>Age: {{ object.age }}</h3>
+                    <h3>Gender: {{ object.gender }}</h3>
+                    <h3>Occupation: {{ object.occupation }}</h3>
+                    <h3>Zip Code: {{ object.zip_code }}</h3>
+                    <br>
+                    <h3>Movies Rated:</h3>
+                    {% for movie in object.movies %}
+                        <h4><a href="{% url 'movie_details' movie.movie_id %}">{{ movie.title }}
+                        </a>- Rating: {{ movie.rating_num  }}</h4>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -6,12 +6,13 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ object.title }}</h3>
+                    <h1 class="panel-title">{{ object.title }}</h1>
                 </div>
                 <div class="panel-body">
-                    <h3>Average Rating: {{ object.avg_rating|floatformat:2 }}</h3>
+                    <h4>Average Rating: {{ object.avg_rating|floatformat:2 }}</h4>
                     {% for rater in object.raters %}
-                        <h3> Rater ID: <a href="{% url 'rater_details' rater %}">{{ rater }}</a></h3>
+                        <h4>Rater ID: <a href="{% url 'rater_details' rater.rater_id %}">{{ rater.rater_id }}
+                        </a>- Rating: {{ rater.rating_num  }}</h4>
                     {% endfor %}
                 </div>
             </div>

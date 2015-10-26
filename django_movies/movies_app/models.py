@@ -13,6 +13,14 @@ class Rater(models.Model):
     def __str__(self):
         return str(self.age) + self.gender + self.zip_code + self.occupation
 
+    def _get_movies(self):
+        movies = []
+        for rating in self.rating_set.all():
+            movies.append({"movie_id": rating.movie.id, "title": rating.movie.title, "rating_num": rating.rating_num})
+        return movies
+
+    movies = property(_get_movies)
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
@@ -26,7 +34,7 @@ class Movie(models.Model):
     def _get_raters(self):
         raters = []
         for rating in self.rating_set.all():
-            raters.append(rating.rater.id)
+            raters.append({"rater_id": rating.rater.id, "rating_num": rating.rating_num})
         return raters
 
     raters = property(_get_raters)
