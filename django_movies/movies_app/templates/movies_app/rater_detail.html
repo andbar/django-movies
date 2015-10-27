@@ -13,6 +13,7 @@
                     <h3>Gender: {{ object.gender }}</h3>
                     <h3>Occupation: {{ object.occupation }}</h3>
                     <h3>Zip Code: {{ object.zip_code }}</h3>
+                    <h3>Average Rating Given: {{ object.avg_rating|floatformat:2 }}</h3>
                     <br>
                     <h3>Movies Rated:</h3>
                     {% for movie in object.movies %}

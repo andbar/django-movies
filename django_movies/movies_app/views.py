@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from movies_app.models import Movie, Rater, Rating
 from django.db.models import Avg
 
@@ -22,4 +22,16 @@ class RaterList(ListView):
 
 class RaterDetails(DetailView):
     model = Rater
+
+class RatingCreateView(CreateView):
+    model = Rating
+    fields = ['rater', 'movie','rating_num']
+    success_url = '/'
+
+class TopTwentyList(ListView):
+    model = Movie
+    template_name = "index.html"
+
+    def get_queryset(self):
+        return Movie.objects.top_twenty()
 
